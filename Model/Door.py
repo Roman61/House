@@ -1,4 +1,4 @@
-from Status import StatusDoor
+from Model.Status import StatusDoor
 
 
 class Door:
@@ -17,12 +17,16 @@ class Door:
     def update(self):
         if self.status == StatusDoor.Opening:
             self.status = StatusDoor.Open
-            return True
+            print('Двери открываются')
+            return False
         elif self.status == StatusDoor.Closing:
             self.status = StatusDoor.Close
-            return True
+            print('Двери закрываются')
+            return False
         elif self.status == StatusDoor.Close:
-            return False
+            print('Двери закрыты')
+            return True
         elif self.status == StatusDoor.Open:
-            return False
+            print('Двери открыты')
+            return True
 

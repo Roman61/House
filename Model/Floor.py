@@ -1,10 +1,19 @@
+from Model.Obj import Object
 
 
 class Floor:
-    def __init__(self, Number, lift):
+    def __init__(self, Number=0, lift=None, parent=None, child=None):
         self.number = Number
         self.lift = lift
         self._contains = {}
+        self.parent = parent
+        self.child = child
+
+    def attachment_parent(self, parent):
+        self.parent = parent
+
+    def attachment_child(self, child):
+        self.child = child
 
     def summon_lift(self):
         if self.lift.get_current_floor == self.number:
@@ -12,16 +21,6 @@ class Floor:
         else:
             self.lift.summon(self.number)
 
-    def drop_to_lift(self, obj):
-        my_obj = self._contains.pop(obj)
-        if self.lift.push_contains(my_obj):
-            return True
-        else:
-            self._contains[obj] = my_obj
-            return False
-
-    def get_from_lift(self, obj):
-        self._contains[len(self._contains)] = obj
 
 
 
