@@ -30,4 +30,9 @@ if __name__ == '__main__':
         if house.lift.update():
             house.lift.attachment_floor(house.floors[9])
             break
+    house.lift.go_to_floor(1)
+    while True:
+        if house.lift.update():
+            house.lift.attachment_floor(house.floors[0])
+            break
     pass

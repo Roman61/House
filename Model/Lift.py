@@ -49,25 +49,28 @@ class Lift(metaclass=Singleton):
         self._attached_floor = None
         self._current_time = current
         # print(f'{self._current_time.hour}:{self._current_time.minute}:{self._current_time.second}')
-        if self._status == StatusLift.go_up:
-            if self._index_current_floor == self._index_target_floor:
-                self._status = StatusLift.stand
-                self.open_door()
-            else:
-                self._index_current_floor += 1
-                print(f'Текущий этаж: {self._index_current_floor}')
-        elif self._status == StatusLift.go_down:
-            if self._index_current_floor == self._index_target_floor:
-                self._status = StatusLift.stand
-                self.open_door()
-            else:
-                self._index_current_floor -= 1
-                print(f'Текущий этаж: {self._index_current_floor}')
-        elif self._status == StatusLift.stand:
-            if self._door.status == StatusDoor.Close:
-                print('Лифт приехал')
-            else:
-                return self._door.update()
+        if self._door.status == StatusDoor.Close:
+            if self._status == StatusLift.go_up:
+                if self._index_current_floor == self._index_target_floor:
+                    self._status = StatusLift.stand
+                    self.open_door()
+                else:
+                    self._index_current_floor += 1
+                    print(f'Текущий этаж: {self._index_current_floor}')
+            elif self._status == StatusLift.go_down:
+                if self._index_current_floor == self._index_target_floor:
+                    self._status = StatusLift.stand
+                    self.open_door()
+                else:
+                    self._index_current_floor -= 1
+                    print(f'Текущий этаж: {self._index_current_floor}')
+            elif self._status == StatusLift.stand:
+                if self._door.status == StatusDoor.Close:
+                    print('Лифт приехал')
+                else:
+                    return self._door.update()
+        else:
+            return self._door.update()
         return False
 
     def open_door(self):
@@ -82,6 +85,15 @@ class Lift(metaclass=Singleton):
 
     def go_to_floor(self, target):
         self._index_target_floor = target
+        if self._index_target_floor > self._index_current_floor:
+            self._status = StatusLift.go_up
+            print(f"Едем вверх, текущий этаж {self._index_current_floor}")
+        elif self._index_target_floor < self._index_current_floor:
+            self._status = StatusLift.go_down
+            print(f"Едем вниз, текущий этаж {self._index_current_floor}")
+        elif self._index_target_floor == self._index_current_floor:
+               print(f"Мы ошиблись, текущий этаж {self._index_current_floor}")
+        self._door.close_door()
 
     def summon(self, target):
         self._index_target_floor = target
