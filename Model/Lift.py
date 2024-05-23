@@ -85,30 +85,29 @@ class Lift(metaclass=Singleton):
 
     def go_to_floor(self, target):
         self._index_target_floor = target
-        if self._index_target_floor > self._index_current_floor:
-            self._status = StatusLift.go_up
-            print(f"Едем вверх, текущий этаж {self._index_current_floor}")
-        elif self._index_target_floor < self._index_current_floor:
-            self._status = StatusLift.go_down
-            print(f"Едем вниз, текущий этаж {self._index_current_floor}")
-        elif self._index_target_floor == self._index_current_floor:
-               print(f"Мы ошиблись, текущий этаж {self._index_current_floor}")
+        self._go()
         self._door.close_door()
 
     def summon(self, target):
         self._index_target_floor = target
-        print(f"Вызываем лифт, текущий этаж {self._index_current_floor}")
+        print(f"Вызываем лифт")
+        self._go()
+
+    def _go(self):
         if self._index_target_floor > self._index_current_floor:
-            self._status = StatusLift.go_up
+            self._up()
         elif self._index_target_floor < self._index_current_floor:
-            self._status = StatusLift.go_down
+            self._down()
         elif self._index_target_floor == self._index_current_floor:
             self.open_door()
+        print(f"текущий этаж {self._index_current_floor}")
 
     def _up(self):
+        print("Едем вверх,", end=' ')
         self._status = StatusLift.go_up
         self._time_start = datetime.now()
 
     def _down(self):
+        print("Едем вниз,", end=' ')
         self._status = StatusLift.go_down
         self._time_start = datetime.now()

@@ -29,10 +29,10 @@ class Object:
         #         return False
         # else:
         #     return False
-        def object_to_parent(self):
-            pass
+    def object_to_parent(self):
+        pass
             # self._contains[len(self._contains)] =
 
-        def get_obj_from(self, obj):
+    def get_obj_from(self, obj):
             # self._contains[len(self._contains)] = obj
-            pass
+        pass
