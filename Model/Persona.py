@@ -1,4 +1,4 @@
-class Object:
+class Persona:
     def __init__(self, weight, Name):
         self.weight = weight
         self.name = Name

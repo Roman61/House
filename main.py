@@ -7,7 +7,7 @@ pygame.init()
 
 
 def main():
-    pygame.display.set_mode((600,400))
+    pygame.display.set_mode((600, 400))
     pygame.display.set_caption("House")
     fl_running = True
     clock = pygame.time.Clock()
@@ -18,8 +18,8 @@ def main():
                 fl_running = False
         clock.tick(60)
     print("Молодец")
-    house = House(height=400, max_of_floors=10)
+    # house = House(height=400, max_of_floors=10)
 
 
+print(pygame.image.get_extended())
 main()
-
