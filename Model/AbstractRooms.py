@@ -1,13 +1,13 @@
 class AbstractRooms:
-    def __init__(self, name='', Number=0, height=0, status=None, door=None):
+    def __init__(self, name='', Number=0, height=0, status=None, door=None, hendler=None):
         self.name = name
         self.number = Number
         self.height = height
-        self._status = status
+        self.status = status
         self.action_for_user = []
         self.action_for_system = []
         self._contains = {}
-        self._door = door
+        self.door = door
 
         #print("Инициализатор класса AbstractRooms")
 
@@ -25,7 +25,7 @@ class AbstractRooms:
         raise Exception(f"Method Update() in {self.__class__.__name__} undefined!")
 
     def open_door(self):
-        self._door.open_door()
+        self.door.open_door()
 
     def close_door(self):
-        self._door.close_door()
+        self.door.close_door()

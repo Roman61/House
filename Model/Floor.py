@@ -5,11 +5,6 @@ from Model.AbstractRooms import AbstractRooms as room
 class Floor(room):
     def __init__(self, Number=0, lift=None, parent=None, child=None, name='этаж'):
         super().__init__(name=name, Number=Number)
-        # self.number = Number
-        # self.name = name
-        # self.action_for_user = []
-        # self._contains = {}
-
         self.lift = lift
         self.parent = parent
         self.child = child
