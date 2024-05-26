@@ -1,4 +1,3 @@
-
 from Model.House import House
 from Model.Status import StatusDoor, StatusLift
 
@@ -17,7 +16,7 @@ def check(floor):
 
 # Тест
 if __name__ == '__main__':
-    house = House(height=400, max_of_floors=10)
+    house = House(height=400, max_of_floors=10, name='ЖК Эльбрус', number=30)
     while True:
         input_floor = check(input("На каком этаже вы находитесь? Введиите число от 1 до 10: "))
 
@@ -38,5 +37,6 @@ if __name__ == '__main__':
                 # house.lift.attachment_floor(house.floors[0])
                 break
         if input("Хотите выйти y/n: ") == 'y':
+            print('Спасибо за пользование нашим лифтом! Всего хорошего!')
             break
     pass

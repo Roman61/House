@@ -6,8 +6,10 @@ from Viewer.Printer import LiftPrinter, DoorPrinter
 
 
 class House:
-    def __init__(self, height, max_of_floors):
+    def __init__(self, height, max_of_floors, name, number):
         self.height = height
+        self.name = name
+        self.number = number
 
         self.maxOfFloors = max_of_floors
         door = Door(name="двери лифта")
@@ -37,7 +39,4 @@ class House:
             current.attachment_parent(parent)
             parent.attachment_child(current)
 
-        print(f'В доме {len(self.floors)} этажей')
-
-
-
+        print(f'В доме {len(self.floors)} этажей, адрес: {self.name}, {self.number}')
