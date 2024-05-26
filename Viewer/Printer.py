@@ -26,7 +26,7 @@ class LiftPrinter:
 
     @staticmethod
     def pr_summon(message):
-        print(f'Вызываем {message['name']} на {message['target']} этаж', end=', ')
+        print(f'{message['name']} на {message['current']} Вызываем {message['name']} на {message['target']} этаж', end=', ')
 
 
 class DoorPrinter:
