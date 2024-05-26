@@ -14,19 +14,19 @@ class LiftPrinter:
 
     @staticmethod
     def pr_selected(message):
-        print(f'Выбран этаж {message['target']}')
+        print(f'Выбран этаж {message['target']}', end=', ')
 
     @staticmethod
     def pr_move_to_down(message):
-        print(f'Едем вниз на {message['target']} этаж')
+        print(f'едем вниз')
 
     @staticmethod
     def pr_move_to_up(message):
-        print(f'Едем вверх на {message['target']} этаж')
+        print(f'едем вверх')
 
     @staticmethod
     def pr_summon(message):
-        print(f'Вызываем {message['name']} на {message['target']} этаж')
+        print(f'Вызываем {message['name']} на {message['target']} этаж', end=', ')
 
 
 class DoorPrinter:

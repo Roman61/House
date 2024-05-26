@@ -40,24 +40,4 @@ class House:
         print(f'В доме {len(self.floors)} этажей')
 
 
-# Тест
-if __name__ == '__main__':
-    house = House(height=400, max_of_floors=10)
 
-    var = house.floors[9].get_actions_for_user()
-    for i in var:
-        i['summon']()
-    while True:
-        house.lift.hendler.dispactch('update', None)
-        if house.lift.door.status == StatusDoor.finish and house.lift.status == StatusLift.finish:
-            house.lift.hendler.dispactch('update', None)
-            # house.lift.attachment_floor(house.floors[9])
-            break
-
-    house.lift.go_to_floor(1)
-    while True:
-        house.lift.hendler.dispactch('update', None)
-        if house.lift.door.status == StatusDoor.finish and house.lift.status == StatusLift.finish:
-            # house.lift.attachment_floor(house.floors[0])
-            break
-    pass
